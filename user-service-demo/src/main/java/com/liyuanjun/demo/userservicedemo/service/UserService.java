@@ -8,5 +8,5 @@ import com.liyuanjun.demo.userservicedemo.pojo.User;
  * Feature:
  */
 public interface UserService {
-    User queryById(Integer id);
+    User queryById(Integer id) throws InterruptedException;
 }

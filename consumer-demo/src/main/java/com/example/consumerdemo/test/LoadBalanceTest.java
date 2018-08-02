@@ -21,7 +21,7 @@ public class LoadBalanceTest {
     RibbonLoadBalancerClient client;
 
     @Test
-    public void test(){
+    public void test() {
         for (int i = 0; i < 100; i++) {
             ServiceInstance instance = this.client.choose("user-service");
             System.out.println(instance.getHost() + ":" + instance.getPort());

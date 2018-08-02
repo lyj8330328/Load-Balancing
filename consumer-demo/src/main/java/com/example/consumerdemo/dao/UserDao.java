@@ -3,6 +3,7 @@ package com.example.consumerdemo.dao;
 
 import com.example.consumerdemo.pojo.User;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -24,6 +25,7 @@ public class UserDao {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @HystrixCommand(fallbackMethod = "queryUserByIdFallback")
     public User queryUserById(Integer id) {
         //根据服务名获取服务，因为如果是集群，那么提供服务的端口可能有多个，所以返回的是列表
 //        List<ServiceInstance> instances = discoveryClient.getInstances("user-service");
@@ -33,7 +35,18 @@ public class UserDao {
 
         //负载均衡，只写服务名，自动寻找ip和端口
 
-        String url="http://user-service/user/"+id;
-        return this.restTemplate.getForObject(url, User.class);
+        long begin = System.currentTimeMillis();
+        String url = "http://user-service/user/" + id;
+        User user = this.restTemplate.getForObject(url, User.class);
+        long end = System.currentTimeMillis();
+        System.out.println("time = " + (end - begin));
+        return user;
+    }
+
+    public User queryUserByIdFallback(Integer id) {
+        User user = new User();
+        user.setId(id);
+        user.setName("Hystrix用户信息查询出现异常！");
+        return user;
     }
 }

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/consumer-demo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/cunsumer-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/consumer-demo/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/eureka-demo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot-mybatis-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-demo/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/user-service-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user-service-demo/src/main/resources/application.yml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/zuul-demo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/zuul-demo/src/main/resources/application.yml" charset="GBK" />
   </component>
 </project>

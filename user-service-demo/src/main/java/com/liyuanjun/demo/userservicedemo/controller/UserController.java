@@ -25,7 +25,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public User getOne(@PathVariable("id") Integer id){
+    public User getOne(@PathVariable("id") Integer id) throws InterruptedException {
         return userService.queryById(id);
     }
 

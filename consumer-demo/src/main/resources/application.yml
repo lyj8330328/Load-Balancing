@@ -29,3 +29,16 @@ logging:
   level:
     org.springframework: debug
     com.example: debug
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 6000 # 设置hystrix的超时时间为6000ms
+#当检测到熔断时，当前线程可能会阻塞，会另起一个线程
+
+
+feign:
+  hystrix:
+    enabled: true # 开启Feign的熔断功能
